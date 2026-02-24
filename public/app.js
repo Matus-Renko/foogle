@@ -40,7 +40,7 @@ function renderResults(payload) {
 
     if (count === 0) {
         resultsSection.classList.remove('hidden');
-        metaEl.textContent = `Request: "${query}" • 0 results`;
+        metaEl.textContent = `• 0 results`;
         resultsList.innerHTML = '<li>No results found, sorry.</li>';
         return;
     }
@@ -60,7 +60,7 @@ function renderResults(payload) {
     });
 
     resultsSection.classList.remove('hidden');
-    metaEl.textContent = `Request: "${query}" • ${count} results`;
+    metaEl.textContent = `• ${count} results`;
 }
 
 function downloadFile(content, fileName, mimeType) {
@@ -139,7 +139,7 @@ searchForm.addEventListener('submit', async (event) => {
         lastSearchPayload = payload;
 
         renderResults(payload);
-        setStatus(`Done. Found ${payload.results.length} Results.`);
+        setStatus(`Found ${payload.results.length} Results.`);
         downloadJsonBtn.disabled = false;
         downloadCsvBtn.disabled = false;
     } catch (error) {
