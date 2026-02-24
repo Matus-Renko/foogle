@@ -2,9 +2,43 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Foogle</title>
+    <link rel="stylesheet" href="./style.css" />
 </head>
 <body>
+    <main class="container">
+        <h1>Foogle</h1>
+        <p class="subtitle">
+            This website gives you results from 1st page of Google.
+        </p>
 
+        <form id="searchForm" class="search-form">
+            <label for="queryInput" class="sr-only">Keyword</label>
+            <input
+                    id="queryInput"
+                    name="query"
+                    type="text"
+                    placeholder="for example: AI taking jobs"
+                    required
+            />
+            <button type="submit" id="searchBtn">Search</button>
+        </form>
+
+        <div class="actions">
+            <button id="downloadJsonBtn" type="button" disabled>Download JSON</button>
+            <button id="downloadCsvBtn" type="button" disabled>Download CSV</button>
+        </div>
+
+        <section id="status" class="status" aria-live="polite"></section>
+
+        <section id="resultsSection" class="results-section hidden">
+            <h2>Results</h2>
+            <div id="meta" class="meta"></div>
+            <ol id="resultsList" class="results-list"></ol>
+        </section>
+    </main>
+
+    <script src="./app.js"></script>
 </body>
 </html>
