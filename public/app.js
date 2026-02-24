@@ -19,7 +19,7 @@ function setStatus(message, isError = false) {
 
 function setLoading(isLoading) {
     searchBtn.disabled = isLoading;
-    searchBtn.textContent = isLoading ? 'Loading...' : 'Search';
+    searchBtn.textContent = isLoading ? 'Searching...' : 'Search';
 }
 
 function escapeHtml(value) {
@@ -33,7 +33,6 @@ function escapeHtml(value) {
 
 function renderResults(payload) {
     const results = payload?.results ?? [];
-    const query = payload?.query ?? '';
     const count = results.length;
 
     resultsList.innerHTML = '';
@@ -49,9 +48,8 @@ function renderResults(payload) {
         const li = document.createElement('li');
 
         li.innerHTML = `
-      <p class="result-title">${escapeHtml(item.position)}. ${escapeHtml(item.title)}</p>
       <a class="result-link" href="${escapeHtml(item.url)}" target="_blank" rel="noopener noreferrer">
-        ${escapeHtml(item.url)}
+        ${escapeHtml(item.title)}
       </a>
       <p class="result-snippet">${escapeHtml(item.snippet || '')}</p>
     `;
@@ -111,7 +109,7 @@ searchForm.addEventListener('submit', async (event) => {
     }
 
     setLoading(true);
-    setStatus('Searching...');
+    setStatus('Waiting for results...');
     resultsSection.classList.add('hidden');
     downloadJsonBtn.disabled = true;
     downloadCsvBtn.disabled = true;
