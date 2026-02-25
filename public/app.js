@@ -139,6 +139,6 @@ downloadCsvBtn.addEventListener('click', () => {
         .replace(/[^\w\-]+/g, '_')
         .slice(0, 40);
 
-    const csv = window.toCsv(lastSearchPayload.results);
+    const csv = window.csvUtils.toCsv(lastSearchPayload.results);
     downloadFile(csv, `${safeQuery}_google_results.csv`, 'text/csv;charset=utf-8;');
 });
