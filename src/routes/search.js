@@ -1,5 +1,5 @@
 const express = require('express');
-const { searchGoogleOrganic } = require('../services/serpApi');
+const serpApiService = require('../services/serpApi');
 
 const router = express.Router();
 
@@ -19,7 +19,7 @@ router.get('/search', async (req, res) => {
     // }
 
     try {
-        const payload = await searchGoogleOrganic(q);
+        const payload = await serpApiService.searchGoogleOrganic(q);
 
         return res.json({
             query: payload.query,

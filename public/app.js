@@ -7,7 +7,6 @@ const downloadCsvBtn = document.getElementById('downloadCsvBtn');
 
 const statusEl = document.getElementById('status');
 const resultsSection = document.getElementById('resultsSection');
-const metaEl = document.getElementById('meta');
 const resultsList = document.getElementById('resultsList');
 
 let lastSearchPayload = null;
@@ -39,7 +38,6 @@ function renderResults(payload) {
 
     if (count === 0) {
         resultsSection.classList.remove('hidden');
-        metaEl.textContent = `• 0 results`;
         resultsList.innerHTML = '<li>No results found, sorry.</li>';
         return;
     }
@@ -58,7 +56,6 @@ function renderResults(payload) {
     });
 
     resultsSection.classList.remove('hidden');
-    metaEl.textContent = `• ${count} results`;
 }
 
 function downloadFile(content, fileName, mimeType) {

@@ -34,7 +34,6 @@ async function searchGoogleOrganic(query) {
 
     const data = response.data || {};
 
-    // SerpAPI usually returns organic array
     const organicResults = Array.isArray(data.organic_results)
         ? data.organic_results
         : [];
