@@ -72,30 +72,6 @@ function downloadFile(content, fileName, mimeType) {
     URL.revokeObjectURL(url);
 }
 
-function toCsv(rows) {
-    const header = ['position', 'title', 'url', 'snippet'];
-
-    const escapeCsv = (value) => {
-        const str = String(value ?? '');
-        const escaped = str.replace(/"/g, '""');
-        return `"${escaped}"`;
-    };
-
-    const lines = [
-        header.join(','),
-        ...rows.map((row) =>
-            [
-                row.position,
-                row.title,
-                row.url,
-                row.snippet
-            ].map(escapeCsv).join(',')
-        )
-    ];
-
-    return lines.join('\n');
-}
-
 searchForm.addEventListener('submit', async (event) => {
     event.preventDefault();
 
@@ -163,6 +139,6 @@ downloadCsvBtn.addEventListener('click', () => {
         .replace(/[^\w\-]+/g, '_')
         .slice(0, 40);
 
-    const csv = toCsv(lastSearchPayload.results);
+    const csv = window.toCsv(lastSearchPayload.results);
     downloadFile(csv, `${safeQuery}_google_results.csv`, 'text/csv;charset=utf-8;');
 });
